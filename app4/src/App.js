@@ -6,18 +6,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cars: []
+      cars: ''
     }
   }
 
-  getCars() {
-    axios.get('https://joes-autos.herokuapp.com/api/vehicles')
-    .then(res => {
-      this.setState({
-        cars: res
-      })
-    })
-  }
+  componentWillMount () {
+    axios.get('https://joes-autos.herokuapp.com/api/vehicles').then((res) => {
+      console.log(res.data)
+    this.setState({cars: res.data.id})}
+  )}
 
   render() {
     return (
