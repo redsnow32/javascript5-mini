@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Movie from 'Movie';
+import Movie from './Movie';
 
 class App extends Component {
 
@@ -15,13 +14,14 @@ class App extends Component {
   render() {
 
     const badMovies = this.state.badMovies.map( movie => {
-      <Movie movie={movie} />
+      return <Movie key={movie} />
     })
 
     return (
       <div className="App">
         <h1>Terrible Movies List:</h1>
-        [badMovies]
+        <h2>{badMovies}</h2>
+        <Movie movie={this.state.badMovies}/>
       </div>
     );
   }
